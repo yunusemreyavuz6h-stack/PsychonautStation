@@ -303,6 +303,7 @@ GLOBAL_LIST_INIT(mining_suit_allowed, list(
 	/obj/item/tank/internals,
 	/obj/item/gun/energy/recharge/kinetic_accelerator,
 	/obj/item/kinetic_crusher,
+	/obj/item/kinetic_hammer,
 	/obj/item/knife,
 	/obj/item/mining_scanner,
 	/obj/item/organ/monster_core,
