@@ -5146,6 +5146,7 @@
 #include "code\modules\mining\equipment\monster_organs\monster_organ.dm"
 #include "code\modules\mining\equipment\monster_organs\regenerative_core.dm"
 #include "code\modules\mining\equipment\monster_organs\rush_gland.dm"
+#include "code\modules\mining\equipment\kinetic_hammer.dm"
 #include "code\modules\mining\laborcamp\laborshuttle.dm"
 #include "code\modules\mining\laborcamp\laborstacker.dm"
 #include "code\modules\mining\lavaland\ash_flora.dm"
