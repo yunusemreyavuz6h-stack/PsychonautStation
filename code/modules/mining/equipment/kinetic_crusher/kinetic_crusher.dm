@@ -10,10 +10,10 @@
 	desc = "An early design of the proto-kinetic accelerator, it is little more than a combination of various mining tools cobbled together, \
 		forming a high-tech club. While it is an effective mining tool, it did little to aid any but the most skilled and/or \
 		suicidal miners against local fauna."
-	icon = 'icons/obj/mining.dmi'
+		icon = 'icons/obj/mining.dmi'uil
 	icon_state = "crusher"
-	base_icon_state = "crusher"
-	inhand_icon_state = "crusher0"
+	base_icon_state = "pkhammer"
+	inhand_icon_state = "pkhammer0"
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
@@ -121,18 +121,19 @@
 
 /obj/item/kinetic_crusher/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/crusher_trophy))
+	{
 		var/obj/item/crusher_trophy/crusher_trophy = attacking_item
 		crusher_trophy.add_to(src, user)
-		return
+		return TRUE
+	}
+///burda hiçbişeyi değiştirmeme rağmen problem var diyor
 	return ..()
-
-/obj/item/kinetic_crusher/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!LAZYLEN(trophies))
 		user.balloon_alert(user, "no trophies!")
 		return ITEM_INTERACT_BLOCKING
 	user.balloon_alert(user, "trophies removed")
-	tool.play_tool_sound(src)
+	playsound(src, 'sound/items/tools/crowbar.ogg', 50, TRUE)
 	for(var/obj/item/crusher_trophy/crusher_trophy as anything in trophies)
 		crusher_trophy.remove_from(src, user)
 	return ITEM_INTERACT_SUCCESS

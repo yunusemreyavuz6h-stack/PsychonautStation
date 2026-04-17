@@ -1,10 +1,10 @@
 /obj/item/kinetic_hammer
-	parent = /obj/item/kinetic_crusher
+	parent_type = /obj/item/kinetic_crusher
 	name = "proto-kinetic hammer"
 	desc = "A proto-kinetic hammer designed to smash and detonate marked threats with blunt force instead of sharp strikes. It trades bleeding and armor penetration for raw impact and collision damage."
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "crusher"
-	base_icon_state = "crusher"
+	icon = 'icons/psychonaut/obj/weapons/proto_kinetic_hammer.dmi'
+	icon_state = "proto_kinetic_hammer"
+	base_icon_state = "proto_kinetic_hammer"
 	inhand_icon_state = "crusher0"
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
@@ -17,7 +17,7 @@
 	throw_speed = 4
 	armour_penetration = 0
 	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT*1.15, /datum/material/glass=HALF_SHEET_MATERIAL_AMOUNT*2.075)
-	hitsound = 'sound/items/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/sonic_jackhammer.ogg'
 	attack_verb_continuous = list("smashes", "crushes", "cleaves", "chops", "pulps")
 	attack_verb_simple = list("smash", "crush", "cleave", "chop", "pulp")
 	sharpness = NONE
@@ -29,20 +29,16 @@
 	light_power = 1.2
 	light_color = "#ffff66"
 	light_on = FALSE
-	var/toggle_light_sound = 'sound/items/weapons/empty.ogg'
-	var/fire_kinetic_blast_sound = 'sound/items/weapons/plasma_cutter.ogg'
-	var/projectile_recharge_sound = 'sound/items/weapons/kinetic_reload.ogg'
-	var/backstab_sound = 'sound/items/weapons/kinetic_accel.ogg'
-	var/list/obj/item/crusher_trophy/trophies = list()
-	var/charged = TRUE
-	var/charge_time = 1.5 SECONDS
-	var/charge_timer
-	var/detonation_damage = 125
-	var/backstab_bonus = 0
-	var/projectile_icon = 'icons/obj/weapons/guns/projectiles.dmi'
-	var/projectile_icon_state = "pulse1"
-	var/force_wielded = 25
-	var/last_projectile_pb = FALSE
+	charge_time = 2.0 SECONDS
+	force_wielded = 20
+	detonation_damage = 70
+	var/attack_delay = 2.5 SECONDS
+	var/attack_delay_after = 1.0 SECONDS
+	var/attack_range = 1
+	var/attack_verb = "smash"
+	var/attack_sound = 'sound/items/weapons/sonic_jackhammer.ogg'
+	var/attack_effect = /obj/effect/temp_visual/kinetic_blast
+
 
 /obj/item/kinetic_hammer/afterattack(mob/living/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!isliving(target))
